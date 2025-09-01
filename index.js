@@ -3,17 +3,26 @@
 // const server = http.createServer((req, res) => {
 //     res.end("Hello world!")
 // })
-import { createServer } from 'node:http'
+import express from 'express'
 import 'dotenv/config'
 
+const app = express()
 
-
-const server = createServer((req, res) => {
-    res.end("Hello world!")
+app.get('/', (req, res) => {
+    res.end("GET : /")
+})
+app.post('/', (req, res) => {
+    res.end("POST : /")
+})
+app.get('/personne', (req, res) => {
+    res.end("GET : /personne")
+})
+app.get('/formation', (req, res) => {
+    res.end("GET : /formation")
 })
 
 const PORT = process.env.PORT || 5000
 
-server.listen(PORT, () => {
+app.listen(PORT, () => {
     console.log(`Adresse serveur : http://localhost:${PORT}`);
 })
